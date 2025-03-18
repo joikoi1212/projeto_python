@@ -1,0 +1,44 @@
+{% extends 'common/_main.html' %}
+{% load i18n %}
+
+{% block tab_title %} The Contrarian Report - Client {% endblock %}
+
+{% block account_label %}
+    <span>
+        {% if subscription_plan == 'premium' %}
+            <span class="text-account-premium">Premium Client</span>
+        {% elif subscription_plan == 'standard' %}
+            <span class="text-account-client">Standard Client</span>
+        {% else %}
+            <span class="text-account-no-subscription">No Subscription</span>
+        {% endif %}
+    </span>
+{% endblock %}
+
+{% block navbar_option_1 %}
+    {% with option_url='client-dashboard' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block navbar_option_2 %}
+    {% with option_url='browse-articles' option_label='Browse Articles' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block navbar_option_3 %}
+{% endblock %}
+
+{% block navbar_option_5 %}
+    {% with option_url='logout' option_label='Logout' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+
+{% block navbar_option_6 %}
+    {% with option_url='update-client' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}

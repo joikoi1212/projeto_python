@@ -1,0 +1,21 @@
+{% extends 'writer/_main.html' %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="container bg-white shadow mt-5 p-5 form-layout">
+        <h3>✏️{% translate "Delete user" %}</h3>
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            <h5>{{ user.email  }}</h5>
+            <h5>{{ user.first_name  }}</h5>
+        <div class="d-flex gap-2">
+            <input type="submit" value="{% translate 'Delete user' %}" class="btn btn-danger">
+            <a href="{% url 'writer-dashboard' %}" class="btn btn-success">
+                {% translate "Return" %}
+            </a>
+        </div>
+        </form>
+    </div>
+    
+{% endblock %} 

@@ -1,0 +1,59 @@
+{% extends 'client/_main.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% if has_subscription %}
+        <div class="container bg-white shadow p-5 mt-5 mb-5 text-center form-layout-update-user {% if subscription_plan == 'premium' %}premium-article{% endif %}">
+            <h3 class="text-center">{% translate 'Subscription Status' %}</h3>
+            <p style="margin-bottom: 0px;" >{% translate 'You can upgrade or cancel your subscription at any time.' %}</p>
+            
+            <p class="{% if subscription_plan == 'premium' %}text-account-premium{% else %}text-account-client{% endif %}" 
+            style="font-size: 3rem; margin-bottom: 30px; margin-top: 20px;">
+                {{ subscription_name }} {% translate 'Plan' %}
+            </p>
+            
+
+            <hr width="100%" style="margin-top: 0px; margin-bottom: 20px;">
+            <div class="d-flex justify-content-between align-items-center no-wrap" style="gap: 20px;">
+                <a href="" class="btn-primary" style="margin: 0;">{% translate 'Upgrade Subscription' %}</a>
+                <a href="{% url 'cancel-subscription' subscription.id %}" class="btn-danger" style="margin: 0;">{% translate 'Cancel Subscription' %}</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="container bg-white shadow p-5 mt-5 mb-5 text-center form-layout-update-user no-subscription-element">
+            <h3 class="text-center">{% translate 'Subscription Status' %}</h3>
+            <p style="margin-bottom: 0px;" >{% translate 'Before you can browse any articles, you need to activate an subscription.' %}</p>
+            
+            <p class="text-account-no-subscription" 
+            style="font-size: 3rem; margin-bottom: 30px; margin-top: 20px;">
+                {% translate 'No Subscription' %}
+            </p>
+            
+
+            <hr width="100%" style="margin-top: 0px; margin-bottom: 20px;">
+            <a href="{% url 'subscribe-plan' %}" class="btn-primary" style="margin-bottom: 0px; margin-top: 0px;">{% translate 'View subscription plans' %}</a>
+        </div>
+    {% endif %}
+        
+        
+        
+    <div class="container bg-white shadow p-5 mt-5 mb-5 form-layout-update-user">
+        <h3 class="text-center">{% translate 'Update Account Settings' %}</h3>
+        <p class="text-center" style="margin-bottom: 30px;">{% translate 'You may update the account settings below' %}</p>
+        
+        
+        <form method="POST" autocomplete="OFF">
+            {% csrf_token %}
+            
+            {{ update_user_form | crispy }}
+            
+
+            <hr width="100%" style="margin-top: 38px; margin-bottom: 20px;">
+            <div class="d-flex justify-content-between align-items-center no-wrap" style="gap: 20px;">
+                <input class="btn-primary" style="margin: 0;" type="submit" value="{% translate 'Update' %}">
+            </div>
+            <a href="{% url 'logout' %}" class="btn-home w-100">{% translate 'Logout now' %}</a>
+        </form>
+    </div>
+{% endblock %}

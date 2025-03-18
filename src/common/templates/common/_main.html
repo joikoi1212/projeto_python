@@ -1,0 +1,25 @@
+{% extends 'common/_base.html' %}
+{% load i18n %}
+
+{% block navbar_option_1 %}
+    {% with option_label='Dashboard' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block navbar_option_4 %}
+{% endblock %}
+
+{% block navbar_option_5 %}
+<li class="nav-item">
+    <a class="btn btn-secondary navbar-btn"
+        href="{% url option_url %}"> {% translate 'Logout' %} </a>
+</li>
+{% endblock %}
+
+{% block navbar_option_6 %}
+    <li class="nav-item">
+        <a class="btn btn-secondary navbar-btn"
+            href="{% url option_url %}"> {% translate 'Account Settings' %} </a>
+    </li>
+{% endblock %}

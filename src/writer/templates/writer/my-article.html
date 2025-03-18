@@ -1,0 +1,47 @@
+{% extends 'writer/_main.html' %}
+{% load i18n %}
+
+
+{% block content %}
+
+    {% if not articles %}
+        <div class="container bg-white shadow mt-5 p-5 form-layout">
+            <h3>{% translate "No articles found" %}</h3>
+            <p>
+            <strong>
+                {% translate "Here you see all the reports and articles you have written" %}
+            </strong>
+            </p>
+            <p>
+                <em> {% translate "Whats your prespective on the market right now?" %} </em>
+            </p>
+        </div>
+    {% endif %}
+
+    {% for article in articles %}
+    <div class="container bg-white shadow mt-5 p-5 form-layout">
+        <h3> {{ article.title }}</h3>
+        <p> {{ article.content }}</p>
+        <p>
+            <strong>
+                {% if article.is_premium %}
+                 ⭐{% translate "Premium article" %}
+                {% else %}
+                    {% translate "Standard article" %}
+                {% endif %}
+            </strong>
+        </p>
+        <hr>
+        {% comment %} <div class="article-info"> {% endcomment %}
+        <div class="article-info">
+            <em> {{ article.date_posted }}</em>
+            <a href="{% url 'update-article' article.id %}" class="btn btn-success">
+            {% translate "Update" %}
+            </a>
+            <a href="{% url 'delete-article' article.id %}" class="btn btn-danger">
+                {% translate "Delete" %}
+                </a>
+        </div>
+    </div>
+    {% endfor %}    
+{% endblock %} 

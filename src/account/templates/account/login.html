@@ -1,0 +1,22 @@
+{% extends "account/_main.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+        {{ message }}s
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% block tab_title %}{% translate "User Login" %}{% endblock %}
+{% block form_title %}{% translate "User Login" %}{% endblock %}
+{% block form_body %}
+    {{ login_form | crispy }}
+{% endblock %}
+{% block submit_action %}{% translate "Submit" %}{% endblock %}
+{% block back_text %}{% translate "Don't have an account?" %} <a href="{% url 'register' %}">{% translate "Register" %}</a>{% endblock %}

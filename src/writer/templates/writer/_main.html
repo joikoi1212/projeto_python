@@ -1,0 +1,44 @@
+
+{% extends 'common/_main.html' %}
+{% load i18n %}
+
+{% block tab_title %} The Contrarian Report - Writer {% endblock %}
+
+{% block account_label %}<span class="text-account-writer">Article Writer</span>{% endblock %}
+
+{% block navbar_option_1 %}
+    {% with option_url='writer-dashboard' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block navbar_option_2 %}
+    {% with option_url='create-article' option_label='Create Article' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block navbar_option_3 %}
+    {% with option_url='my-articles' option_label='My Articles' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block navbar_option_4 %}
+    {% with option_url='update-writer' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block navbar_option_5 %}
+    {% with option_url='logout' option_label='Logout' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+
+{% block navbar_option_6 %}
+    {% with option_url='update-writer' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}

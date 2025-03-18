@@ -1,4 +1,5 @@
 django
 uvicorn[standard]
+crispy-bootstrap5
 ptpython
 docopt

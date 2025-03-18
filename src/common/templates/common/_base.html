@@ -1,0 +1,85 @@
+<!--
+    https://docs.djangoproject.com/en/5.1/ref/templates/language/
+-->
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> {% block tab_title %} {% endblock %} </title>
+    {% block base_head_content %}
+        {% include 'common/_base_head_content.html' %}
+    {% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center sticky-top shadow-s">
+        <a class="navbar-brand main-heading" href="{% url 'home' %}" style="margin-left: 25px;"> 
+            The Contrarian Report {% block account_label %} {% endblock %}
+        </a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+            <ul class="navbar-nav {% block navbar_item_margin %} ms-auto {% endblock %}">
+
+                {% block navbar_option_1 %}
+                <li class="nav-item">
+                    <a class="btn btn-secondary navbar-btn" type="button"  
+                        href="{% url option_url %}">{% translate option_label %}</a>
+                    </li>
+                {% endblock %}
+                
+                {% block navbar_option_2 %}
+                <li class="nav-item">
+                    <a class="btn btn-secondary navbar-btn" type="button"  
+                        href="{% url option_url %}">{% translate option_label %}</a>
+                    </li>
+                {% endblock %}
+                
+                {% block navbar_option_3 %}
+                <li class="nav-item">
+                    <a class="btn btn-secondary navbar-btn" type="button"  
+                        href="{% url option_url %}">{% translate option_label %}</a>
+                    </li>
+                {% endblock %}
+                
+                {% block navbar_option_4 %}
+                <li class="nav-item">
+                    <a class="btn btn-secondary navbar-btn" type="button"  
+                        href="{% url option_url %}">{% translate option_label %}</a>
+                    </li>
+                {% endblock %}
+                
+                {% block navbar_option_5 %}
+                <li class="nav-item">
+                    <a class="btn btn-secondary navbar-btn" type="button"  
+                        href="{% url option_url %}">{% translate option_label %}</a>
+                    </li>
+                {% endblock %}
+                
+                {% block navbar_option_6 %}
+                <li class="nav-item">
+                    <a class="btn btn-secondary navbar-btn" type="button"  
+                        href="{% url option_url %}">{% translate option_label %}</a>
+                    </li>
+                {% endblock %}
+            
+            </ul>
+        </div>
+    </nav>
+
+    {% block content %}
+
+    {% endblock %}
+
+</body>
+</html>

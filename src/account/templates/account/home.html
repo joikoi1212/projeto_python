@@ -1,0 +1,46 @@
+<!--
+    https://docs.djangoproject.com/en/5.1/ref/templates/language/
+-->
+{% extends 'common/_base.html' %}
+{% load i18n %}
+
+{% block tab_title %} The Contrarian Report {% endblock %}
+
+{% block navbar_option_1 %}
+    {% with option_url='register' option_label='Register' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block navbar_option_2 %}
+    {% with option_url='login' option_label='Login' %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block navbar_option_3 %}
+{% endblock %}
+
+{% block navbar_option_4 %}
+{% endblock %}
+
+{% block navbar_option_5 %}
+{% endblock %}
+
+{% block navbar_option_6 %}
+{% endblock %}
+
+{% block content %}
+    <div class="general-container">
+        <div class="text-center">
+            <h5>
+                {% translate 'Get access to unique and profitable perspectives on the capital markets!' %}
+            </h5>
+            <p class="mb-4">{% translate 'Access our exclusive collection of reports and articles.' %}</p>
+            <a class="btn btn-success" style="width: 200px;" type="button"  href="{% url 'register' %}">
+                <i class="fa fa-angle-right" aria-hidden="true"></i> 
+                    {% translate 'Get Started' %}
+            </a>
+        </div>
+    </div>
+{% endblock %}

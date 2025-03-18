@@ -1,0 +1,27 @@
+{% load static %}
+{% load i18n %}
+
+<html>
+    <head>
+        <title>{% block tab_title %}{% endblock %}</title>
+        {% block base_head_content%}
+            {% include 'common/_base_head_content.html' %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="container bg-white shadow p-5 form-layout" style="max-width: 560px;">
+            <h1>{% block form_title %}{% endblock %}</h1>
+            
+            <form method="POST">
+                {% csrf_token %}
+
+                {% block form_body %}
+                
+                {% endblock %}
+
+                <input type="submit" value="{% block submit_action %}{% endblock %}" class="btn-primary">
+                <p class="text-center pt-1 mb-0 mt-4"> {% block back_text %}{% endblock %}</p>
+            </form>
+        </div>
+    </body>
+</html>

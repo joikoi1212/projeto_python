@@ -1,0 +1,25 @@
+body {
+    background-color: white;
+}
+
+.font-layot {
+    border-radius : 10px;
+    border: 1px solid black;
+}
+
+
+.form-layout, .paypal-form-layout {
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.paypal-form-layout {
+    max-width: 500px;
+}
+
+.article-info {
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}

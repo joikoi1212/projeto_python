@@ -1,0 +1,23 @@
+{% extends 'writer/_main.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="container bg-white shadow mt-5 p-5 form-layout">
+        <h3>✏️{% translate "Update account details" %}</h3>
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            {{ update_user_form|crispy }}
+            <div class="article-info">
+                <input type="submit" value="{% translate 'Update' %}" class="btn btn-success">
+
+                <a href="{% url 'delete-user' %}" class="btn btn-danger">
+                    {% translate "Delete" %}
+                    </a>
+            </div>
+
+        </form>
+    </div>
+    
+{% endblock %} 

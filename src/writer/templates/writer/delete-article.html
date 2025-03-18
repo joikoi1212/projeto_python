@@ -1,0 +1,21 @@
+{% extends 'writer/_main.html' %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="container bg-white shadow mt-5 p-5 form-layout">
+        <h3>✏️{% translate "Delete article" %}</h3>
+        <p>{% translate "Are you sure you want to delete this article?" %}</p>
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            <h5>{{ article.title  }}</h5>
+        <div class="d-flex gap-2">
+            <input type="submit" value="{% translate 'Delete article' %}" class="btn btn-danger">
+            <a href="{% url 'my-articles' %}" class="btn btn-success">
+                {% translate "Return" %}
+            </a>
+        </div>
+        </form>
+    </div>
+    
+{% endblock %} 
