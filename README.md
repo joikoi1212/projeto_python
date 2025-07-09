@@ -1,2 +1,2 @@
 ﻿# projeto_python
-dasd
+Aplicação Web "Contrarian Report" 
